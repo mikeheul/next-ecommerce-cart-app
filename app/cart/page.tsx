@@ -18,11 +18,11 @@ export default function CartPage() {
                             <li key={item.id} className="text-center sm:text-left flex flex-col sm:flex-row sm:justify-between items-center bg-white dark:bg-slate-700 shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow">
                                 <div>
                                     <h2 className="font-bold text-lg">{item.name}</h2>
-                                    <p className="text-gray-500">${item.price}</p>
+                                    <p className="text-gray-200">{item.price} €</p>
                                 </div>
                                 <div className="flex items-center space-x-2">
                                     <button
-                                        className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 dark:bg-slate-600 dark:hover:bg-slate-500 p-2 rounded-md transition-colors"
+                                        className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 dark:bg-slate-400 dark:hover:bg-slate-500 p-2 rounded-md transition-colors"
                                         onClick={() => updateQuantity(item.id, Math.max(1, item.quantity - 1))}
                                     >
                                         <Minus className="w-4 h-4 text-gray-700" />
@@ -35,7 +35,7 @@ export default function CartPage() {
                                         className="w-16 text-center border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                                     />
                                     <button
-                                        className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 dark:bg-slate-600 dark:hover:bg-slate-500 p-2 rounded-md transition-colors"
+                                        className="flex items-center justify-center bg-gray-200 hover:bg-gray-300 dark:bg-slate-400 dark:hover:bg-slate-500 p-2 rounded-md transition-colors"
                                         onClick={() => updateQuantity(item.id, item.quantity + 1)}
                                     >
                                         <Plus className="w-4 h-4 text-gray-700" />
@@ -52,18 +52,20 @@ export default function CartPage() {
                         ))}
                     </ul>
                     <div className="mt-6">
-                        <p className="text-lg font-bold">Total: ${totalPrice.toFixed(2)}</p>
+                        <p className="text-lg font-bold">Total: {totalPrice.toFixed(2)} €</p>
                         
-                        <button
-                            className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors"
-                            onClick={clearCart} // Clear all items in the cart
-                        >
-                            Clear Cart
-                        </button>
-                        
-                        <button className="bg-green-600 text-white px-4 py-2 rounded-md mt-4 hover:bg-green-700 transition-colors">
-                            Checkout with Stripe
-                        </button>
+                        <div className="mt-5 flex gap-3">
+                            <button
+                                className="bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition-colors"
+                                onClick={clearCart} // Clear all items in the cart
+                            >
+                                Clear Cart
+                            </button>
+                            
+                            <button className="bg-green-600 text-white px-4 py-2 rounded-md hover:bg-green-700 transition-colors">
+                                Checkout with Stripe
+                            </button>
+                        </div>
                     </div>
                 </>
             )}
