@@ -1,0 +1,12 @@
+model CartItem {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    
+    productId   String @db.ObjectId
+    product     Product @relation(fields: [productId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+    
+    orderId     String @db.ObjectId
+    order       Order @relation(fields: [orderId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+    quantity    Int
+    userId      String
+}

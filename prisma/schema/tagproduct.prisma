@@ -1,0 +1,12 @@
+model TagProduct {
+    id          String   @id @default(auto()) @map("_id") @db.ObjectId
+    
+    productId   String @db.ObjectId
+    product     Product @relation(fields: [productId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+    tagId       String @db.ObjectId
+    tag         Tag @relation(fields: [tagId], references: [id], onUpdate: Cascade, onDelete: Cascade)
+
+    @@index([productId])
+    @@index([tagId])
+}

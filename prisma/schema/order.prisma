@@ -1,0 +1,9 @@
+model Order {
+    id        String   @id @default(auto()) @map("_id") @db.ObjectId
+    userId    String
+
+    items     CartItem[]
+    
+    total     Float
+    createdAt DateTime @default(now())
+}
