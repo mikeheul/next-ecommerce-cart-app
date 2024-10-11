@@ -10,7 +10,7 @@ export default function Navbar() {
     const totalItems = getTotalItems(); // Get the total items count from the context
 
     return (
-        <nav className="bg-gray-800 p-4">
+        <nav className="bg-gray-900 p-4">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/products" className="text-white text-lg font-bold">
                     E-commerce
